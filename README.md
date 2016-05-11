@@ -24,6 +24,7 @@ We used ipython to visualize our seat occupation situation with the data we get 
 --DATA VISUALIZATION ON WEBSITE (flask-Smart-seat-realtime)
 
 We used a simple python-based website designed package, flask to build our website. The main page includes two parts of our seat situation. 
+
 1. seat reservation sytstem
 It's connected with postgreSQL database which is used for storing student information, seat information and reservation situation. The main functions include: 
 a complete login system. Users could sign up an account. Same ID name or unmatched confirm password would be forbidden
