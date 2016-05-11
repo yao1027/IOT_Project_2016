@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+        <head></head>
+        <body>
+                <div style="text-align:center;"><img src="http://cdn.lightgalleries.net/4e49658f743f9/images/BL-9778-3.jpg" alt="library" ></div>
+                <div style="text-align:center; font-family:Strong"><h1>Library seat reservaton system </h1></div>
+                <h1 style="font-size:20px">Login</h1>
+{% block body %}
+{% if error %}
+<p class="error"><strong>Error:</strong> {{ error }}
+{% endif %}
+    <form action="{{ url_for('login') }}" method="POST">
+    <dl>
+      <dt>Student ID:
+      <dd><input type="text" name="s_id">
+      <dt>Password:
+      <dd><input type="password" name="password">
+      <dd><input type="submit" value="Login">
+    </dl>
+    </form>
+
+    <form action="{{ url_for('signup')}}">
+    <dl>
+      <dt>Don't have account?
+      <dd><input type="submit" value="SignUp">
+    </dl>
+  </form>
+{% endblock %}
+<a href="{{ url_for('index') }}">Back to Home Page</a>
+</body>
+
+</html>
+

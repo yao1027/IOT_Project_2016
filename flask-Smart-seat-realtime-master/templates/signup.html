@@ -1,0 +1,20 @@
+<head></head>
+<body>
+<div style="text-align:center;"><img src="http://www.capitalnewyork.com/sites/default/files/imagecache/big_article_pic/a-columbia%20University%20_0.png" alt="library" ></d$
+<div style="text-align:center; font-family:Strong"><h1>Library seat reservaton system </h1></div>
+{% block body %}
+  <h3>Create Reservation Account</h3>
+  {% if error %}<p class="error"><strong>Error:</strong> {{ error }}{% endif %}
+  <form action="{{ url_for('signup') }}" method="POST">
+    <dl>
+      <dt>Student ID:
+      <dd><input type="text" name="s_id">
+      <dt>Password:
+      <dd><input type="password" name="password">
+      <dt>Confirm your password:
+      <dd><input type="password" name="password_confirm">
+      <dd><input type ='submit' value ='sign up'>
+    </dl>
+  </form>
+  <a href="{{ url_for('index') }}">Back to Home Page</a>
+{% endblock %}
