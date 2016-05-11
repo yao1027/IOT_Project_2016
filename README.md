@@ -5,6 +5,7 @@ MON2 project:SmartSeats
 Distribution of the python file:
 
 --DATA COLLECT AND ANALYSIS
+
 1. ColletDataAnalysis.py
 loops through all the installed sensors and connects to each one via Bluetooth. we use tool[i].expect to read values from the 1st Notification or the 2nd Notification, and use tool[i].after.split() to read the bytes that represent the sensor values we would like to use. 
 
@@ -20,6 +21,7 @@ For this part, we used the segment of code we used in the previous lab experient
 We used ipython to visualize our seat occupation situation with the data we get from dynamoDB.
 
 --DATA VISUALIZATION ON WEBSITE (flask-Smart-seat-realtime)
+
 We used a simple python-based website designed package, flask to build our website. The main page includes two parts of our seat situation. 
 1. seat reservation sytstem
 It's connected with postgreSQL database which is used for storing student information, seat information and reservation situation. The main functions include: 
