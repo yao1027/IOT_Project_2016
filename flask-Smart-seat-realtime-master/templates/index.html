@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<head>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+</style>
+ </head>
+<body>
+<title>Seat system</title>
+        <div style="text-align:center;"><img src="http://library.columbia.edu/content/libraryweb/locations/butler/_jcr_content/layout_featuredcontent/image.img.jpg/1368472856821.jpg" alt="library" ></div>  
+        <div style="text-align:center;"> <h1>Library seat reservaton system </h1></div>
+        {% if not session.logged_in %}
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('signup') }}">Sign Up</a>
+        {% else %}
+        <p><a href="{{ url_for('logout') }}">Logout</a></p>
+        <p>Hello, Student: {{session.s_id}}</p>
+        <form action="{{ url_for('index')}}" method = "POST">
+                <input type="submit" name = "subject" value="Show all Seats">
+                <input type='submit' name = "subject" value="Cancel your reservation">
+                <input type="submit" name = "subject" value="Make a reservation">
+        </form>
+
+{% if single_infor %}
+  <table style="width:50%" align = 'center'>
+      <caption style='font-size: 40px'><strong>information about the seat you choose<strong><caption>
+          <tr>
+              <th> Time Period </th>
+              <th> Available </th>
+          </tr>
+          {% for seat in single_infor %}
+          <tr>
+              <td> {{seat.time_period}} </td>
+              <td> {{seat.available}} </td>
+          </tr>
+          {% endfor %} 
+{% endif %}
+
+        {% if seats %}
+        <table style="width:50%" align = 'center' >
+                <caption style='font-size: 40px'><strong>all seats<strong><caption>
+                <tr>
+                        <th>Seat ID</th>
+                        <th>Time Period</th>
+                        <th>Available</th>
+                </tr>
+                {% for seat in seats %}
+                <tr>
+                        <td> {{seat.seat_id}} </td>
+                        <td> {{seat.time_period}} </td>
+                        <td> {{seat.available}} </td>
+                </tr>
+                {% endfor %}
+
+        </table>
+        {% endif %}
+
+        {% if self_reserved %}
+        <table style="width:50%" align = 'center'>
+                <caption style='font-size: 40px'><strong>Your reserved list<strong><caption>
+                <tr>
+                        <th> Student ID </th>
+                        <th> Seat ID </th>
+                        <th> Time Period </th>
+                </tr>
+
+        {% endif %}
+
+        {% if make_reservation %}
+        <form action="{{ url_for('index')}}" method = "POST">
+        	<body>
+ 				<img src = 'http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons-256/simple-red-square-icons-people-things/129312-simple-red-square-icon-people-things-chair3.png' alt = "seat picture" style = "width: 60px; height: 60px;"> 
+ 				<input type="radio" name="object" value="1">seat 1
+ 			</body>
+
+ 			<body>
+ 				<img src = 'http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons-256/simple-red-square-icons-people-things/129312-simple-red-square-icon-people-things-chair3.png' alt = "seat picture" style = "width: 60px; height: 60px;"> 
+ 				<input type="radio" name="object" value="2">seat 2
+ 			</body>
+ 			<body>
+ 				<img src = 'http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons-256/simple-red-square-icons-people-things/129312-simple-red-square-icon-people-things-chair3.png' alt = "seat picture" style = "width: 60px; height: 60px;"> 
+ 				<input type="radio" name="object" value="3">seat 3
+ 			<body>
+				<img src = 'http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons-256/simple-red-square-icons-people-things/129312-simple-red-square-icon-people-things-chair3.png' alt = "seat picture" style = "width: 60px; height: 60px;"> 
+ 				<input type="radio" name="object" value="4">seat 4
+ 			</body>
+
+                <dt>Please select a time_period:
+                <dt><input type="radio" name="time_period1" value="0-2 pm">0-2 pm
+                <dt><input type="radio" name="time_period1" value="2-4 pm">2-4 pm
+                <dt><input type="radio" name="time_period1" value="4-6 pm">4-6 pm
+
+                <dt><input type="submit" name="subject2" value="reserve">
+        </form>
+        {% endif %}
+
+        {% if delete %}
+        <form action="{{url_for('index')}}" method="POST">
+                <dt>Please ENTER the seat ID you want to cancle:
+                <dt><input type="text" name="cancelseat">
+
+                <dt>Please select the time period you want to cancle:
+                <dt><input type="radio" name="time_period" value="0-2 pm">0-2 pm
+                <dt><input type="radio" name="time_period" value="2-4 pm">2-4 pm
+                <dt><input type="radio" name="time_period" value="4-6 pm">4-6 pm
+                <dt><input type="submit" name="subject2" value="cancel">
+        <table style="width:50%" align = 'center'>
+                <tr>
+                        <th>Seat ID</th>
+                        <th>Time Period</th>
+                </tr>
+                {% for reserved in sreserved %}
+                <tr>
+                        <td>{{reserved.seat_id}}</td>
+                        <td>{{reserved.time_period}}</td>
+                </tr>
+                {% endfor %}
+        </table>
+        </from>
+        {% endif %}
+
+        {% if seat_notice %}
+        <p> {{seat_notice}}</p>
+        {% endif %}
+        {% endif %}
+
+
+

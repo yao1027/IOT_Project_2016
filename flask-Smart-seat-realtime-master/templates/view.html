@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html>
+   <head> </head>
+   <style>
+.rotate90 {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    width: 40%;
+    height:40%;
+    float:left;
+    padding:10px;
+    margin-top: 70px;
+}
+
+#left {
+    height:300px;
+    width:100px;
+    float:left;
+    padding:5px;
+    margin-left: 150px;
+}
+
+#right {
+    height:300px;
+    width:100px;
+    float:left;
+    padding:5px;
+}
+
+   </style>
+    <a href="{{ url_for('login') }}">Back to login</a>
+    <p>
+        <img id="6" src="https://s-media-cache-ak0.pinimg.com/736x/cf/68/ce/cf68ce8090e1dfca6f659ed889df1971.jpg" style = "width: 20px; height: 20px;" /> Occupied
+        <img id="7" src="http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons-256/3d-glossy-blue-orbs-icons-people-things/059273-3d-glossy-blue-orb-icon-people-things-chair2.png" style = "width: 20px; height: 20px;" /> Empty
+        <img id="8" src="http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons-256/3d-glossy-pink-orbs-icons-people-things/107960-3d-glossy-pink-orb-icon-people-things-chair2.png" style = "width: 20px; height: 20px;" /> Unknown
+    </p> 
+
+    {% if information %}
+      <script type = "text/javascript">
+
+        function changeImage() {
+            // for item in items: 
+                if ( "{{ information[0]["Status"] }}" == "occupied"  ) {
+                        document.getElementById("5").src = images[1];
+                } else if ( "{{ information[0]["Status"] }}"== "empty" ) {
+                        document.getElementById("5").src = images[2];
+                } else {
+                        document.getElementById("5").src = images[0];                    
+                }
+                if ( "{{ information[1]["Status"]}}" == "occupied" ) {
+                        document.getElementById("4").src = images[1];
+                } else if ( "{{ information[1]["Status"] }}"== "empty" ) {
+                        document.getElementById("4").src = images[2];
+                } else {
+                        document.getElementById("4").src = images[0];                    
+                }
+                if ( "{{information[2]["Status"]}}" == "occupied" ) {
+                        document.getElementById("3").src = images[1];
+                } else if ( "{{information[2]["Status"]}}"== "empty" ) {
+                        document.getElementById("3").src = images[2];
+                } else {
+                        document.getElementById("3").src = images[0];                    
+                }
+
+                if ( "{{ information[3]["Status"] }}" == "occupied"  ) {
+                        document.getElementById("2").src = images[1];
+                } else if ( "{{ information[3]["Status"] }}".trim() == "empty" ) {
+                        document.getElementById("2").src = images[2];
+                } else {
+                        document.getElementById("2").src = images[0];                    
+                }
+                if ( "{{ information[4]["Status"]}}" == "occupied" ) {
+                        document.getElementById("1").src = images[1];
+                } else if ( "{{ information[4]["Status"] }}"== "empty" ) {
+                        document.getElementById("1").src = images[2];
+                } else {
+                        document.getElementById("1").src = images[0];                    
+                }
+                if ( "{{information[5]["Status"]}}" == "occupied" ) {
+                        document.getElementById("0").src = images[1];
+                } else if ( "{{information[5]["Status"]}}"== "empty" ) {
+                        document.getElementById("0").src = images[2];
+                } else {
+                        document.getElementById("0").src = images[0];                    
+                }
+ 
+        }
+                        // document.write('{{ information[0]["Status"] }}');
+
+                        var images = [];
+                        images[0] = "http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons-256/3d-glossy-pink-orbs-icons-people-things/107960-3d-glossy-pink-orb-icon-people-things-chair2.png";
+                        images[1] = "https://s-media-cache-ak0.pinimg.com/736x/cf/68/ce/cf68ce8090e1dfca6f659ed889df1971.jpg";
+                        images[2] = "http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons-256/3d-glossy-blue-orbs-icons-people-things/059273-3d-glossy-blue-orb-icon-people-things-chair2.png";
+ 
+      </script>
+      {% endif %}
+<div id = "left">
+<form align = 'left'>
+        <body onload = "changeImage()">
+        <body>
+        <img id="0" src="startpicture.jpg" style = "width: 100px; height: 100px;" />
+        <p> Seat 0 </p>
+        </body>
+        <body>
+        <img id="1" src="startpicture.jpg" style = "width: 100px; height: 100px;"/>
+        </body>
+        <p> Seat 1 </p>
+        <body>
+        <img id="2" src="startpicture.jpg" style = "width: 100px; height: 100px;"/>
+        </body>
+        <p> Seat 2 </p>
+    </body>
+</form>
+</div>
+
+    <img id = "table" src = "http://kitchenlayouts.top/wp-content/uploads/2015/11/table-top-view-with-you-can-download-table-top-view-in-your-computer-by-clicking.jpg" class = "rotate90" >
+
+<div id = "right">
+<form >
+        <body onload = "changeImage()">
+        <body>
+        <img id="3" src="startpicture.jpg" style = "width: 100px; height: 100px;" />
+        </body>
+        <p> Seat 3 </p>
+        <body>
+        <img id="4" src="startpicture.jpg" style = "width: 100px; height: 100px;"/>
+        </body>
+        <p> Seat 4 </p>
+        <body>
+        <img id="5" src="startpicture.jpg" style = "width: 100px; height: 100px;"/>
+        </body>
+        <p> Seat 5 </p>
+    </body>
+</form>
+</div>
+
+
+
+</html>
+
