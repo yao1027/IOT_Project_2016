@@ -20,6 +20,7 @@ For this part, we used the segment of code we used in the previous lab experient
 3.plot.py
 We used ipython to visualize our seat occupation situation with the data we get from dynamoDB.
 
+
 --DATA VISUALIZATION ON WEBSITE (flask-Smart-seat-realtime)
 
 We used a simple python-based website designed package, flask to build our website. The main page includes two parts of our seat situation. 
@@ -30,6 +31,7 @@ a complete reservation system. Users could reserve seat in a certain time period
 
 2. real-time seat occupation visualization
 The Edison periodically sends seat status to AWS DynamoDB, which stores the most updated occupancy information for each seat. From the DynamoDB our website retrieves the updates, and display them to our users in a straightforward mapping that reflects how the seats are physically arranged in the library. Each seat belongs to one of the three possible categories:
+
 * Empty (RELIABLE): Both temperature and acceleration criteria indicate the seat is available
 * Occupied (RELIABLE): Both temperature and acceleration criteria indicate the seat is unavailable
 * Uncertain (UNRELIABLE): Only one of the temperature and acceleration criteria indicates that the seat is occupied
